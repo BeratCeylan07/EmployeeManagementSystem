@@ -83,4 +83,9 @@ Aslında zorluktan ziyade bu projeye başladığımda daha öncede benzeri bir p
 Teknik olarak ikilemde kaldığım tek husus şu oldu: Ben özellikle UI tarafında kullanıcı bekletmeden işlem yaptırmayı seviyorum. klasik olarak asp.net'in form yapısını kullanmak istemedim. Bu pek çok açıdan bizleri sınırlandırmaktadır, istek attıktan sonra dönen response göre kullanıcı bilgilendirmek (sweetalert2) gibi. Bu nedenle tüm http isteklerini Generic bir ajax yapısı kurarak gerçekleştirdim. Bunun bir üst versiyonu şu olabilir di fakat projeyi yetiştirememe korkusundan ötürü bu seçeneği eledim: ajax ile MVC-UI da ilgili controller daki actiona istek atıp o action içerisinden HTTP isteği atmak daha doğru bir yaklaşım olurdu. Network de API ye giden isteğin hiç bir şekilde gözükmemesi için.
 
 
+## Erişim Bilgileri:
+
+E-Mail: esin.ozer@acerpro.com
+Password: 309840
+
 
