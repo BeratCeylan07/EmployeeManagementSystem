@@ -71,6 +71,11 @@ gerekir.
 8. Entityler BaseEntityden impelemente olmaktadır. BaseEntity'de, ID, IsCreaatedDate, IsModifiedDate, IsCreatedUserId, IsModifiedUserId field'ları mevcuttur.
 Create & update işlemlerinde bu field'lar da ilgili tarih ve userid ile set edilmektedir.
 
+## API Endpointleri:
+
+<img width="1822" alt="Ekran Resmi 2024-08-19 17 17 16" src="https://github.com/user-attachments/assets/c17e5cd0-c6e5-4477-8da8-d12b2d25e143">
+
+
 ## Karşılaştığım Zorluklar: 
 Aslında zorluktan ziyade bu projeye başladığımda daha öncede benzeri bir proje geliştirdiğim için (https://www.linkedin.com/feed/update/urn:li:activity:7227429400378527744/) personellerin aldığı ödemeler, pdks(giriş-çıkış logları) ve bu pdks hesaplaması ile aylık net personel alacağının hesaplanması gibi işlemleri yapmayı da istedim. projeyi yayınladıktan sonrada geliştirmeleri yapmaya devam edeceğim :) 
 Örnek olarak: Departman ekranında sağda görmüş olduğunuz piechart departmanların doluluk oranlarını gösterir, Aylık her departmanın ayrı ayrı personel giderlerinin hesaplanarak bu ve benzeri grafiklerde gösterilmesi gibi işlemleride yapmayı istedim 3 gün içerisinde bunları da sizlere sunabilmeyi çok istedim ancak yetiştiremedim fakat dediğim gibi geliştirmeye devam edicem.
