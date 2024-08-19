@@ -1,0 +1,11 @@
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/bin/Debug/net8.0/EmployeeManagementSystem.Entity.deps.json
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/bin/Debug/net8.0/EmployeeManagementSystem.Entity.dll
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/bin/Debug/net8.0/EmployeeManagementSystem.Entity.pdb
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/obj/Debug/net8.0/EmployeeManagementSystem.Entity.GeneratedMSBuildEditorConfig.editorconfig
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/obj/Debug/net8.0/EmployeeManagementSystem.Entity.AssemblyInfoInputs.cache
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/obj/Debug/net8.0/EmployeeManagementSystem.Entity.AssemblyInfo.cs
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/obj/Debug/net8.0/EmployeeManagementSystem.Entity.csproj.CoreCompileInputs.cache
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/obj/Debug/net8.0/EmployeeManagementSystem.Entity.dll
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/obj/Debug/net8.0/refint/EmployeeManagementSystem.Entity.dll
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/obj/Debug/net8.0/EmployeeManagementSystem.Entity.pdb
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/obj/Debug/net8.0/ref/EmployeeManagementSystem.Entity.dll

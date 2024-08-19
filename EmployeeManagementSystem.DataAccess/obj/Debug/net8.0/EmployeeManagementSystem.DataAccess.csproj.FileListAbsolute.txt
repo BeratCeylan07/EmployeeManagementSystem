@@ -1,0 +1,17 @@
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/bin/Debug/net8.0/EmployeeManagementSystem.DataAccess.deps.json
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/bin/Debug/net8.0/EmployeeManagementSystem.DataAccess.runtimeconfig.json
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/bin/Debug/net8.0/EmployeeManagementSystem.DataAccess.dll
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/bin/Debug/net8.0/EmployeeManagementSystem.DataAccess.pdb
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/bin/Debug/net8.0/EmployeeManagementSystem.Entity.dll
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/bin/Debug/net8.0/EmployeeManagementSystem.Entity.pdb
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/obj/Debug/net8.0/EmployeeManagementSystem.DataAccess.csproj.AssemblyReference.cache
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/obj/Debug/net8.0/EmployeeManagementSystem.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/obj/Debug/net8.0/EmployeeManagementSystem.DataAccess.AssemblyInfoInputs.cache
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/obj/Debug/net8.0/EmployeeManagementSystem.DataAccess.AssemblyInfo.cs
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/obj/Debug/net8.0/EmployeeManagementSystem.DataAccess.csproj.CoreCompileInputs.cache
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/obj/Debug/net8.0/Employee.4E4F2475.Up2Date
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/obj/Debug/net8.0/EmployeeManagementSystem.DataAccess.dll
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/obj/Debug/net8.0/refint/EmployeeManagementSystem.DataAccess.dll
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/obj/Debug/net8.0/EmployeeManagementSystem.DataAccess.pdb
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/obj/Debug/net8.0/EmployeeManagementSystem.DataAccess.genruntimeconfig.cache
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/obj/Debug/net8.0/ref/EmployeeManagementSystem.DataAccess.dll

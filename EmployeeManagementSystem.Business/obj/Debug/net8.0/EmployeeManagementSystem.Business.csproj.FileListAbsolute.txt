@@ -1,0 +1,17 @@
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/bin/Debug/net8.0/EmployeeManagementSystem.Business.deps.json
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/bin/Debug/net8.0/EmployeeManagementSystem.Business.dll
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/bin/Debug/net8.0/EmployeeManagementSystem.Business.pdb
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/bin/Debug/net8.0/EmployeeManagementSystem.DataAccess.dll
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/bin/Debug/net8.0/EmployeeManagementSystem.Entity.dll
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/bin/Debug/net8.0/EmployeeManagementSystem.DataAccess.pdb
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/bin/Debug/net8.0/EmployeeManagementSystem.Entity.pdb
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/obj/Debug/net8.0/EmployeeManagementSystem.Business.csproj.AssemblyReference.cache
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/obj/Debug/net8.0/EmployeeManagementSystem.Business.GeneratedMSBuildEditorConfig.editorconfig
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/obj/Debug/net8.0/EmployeeManagementSystem.Business.AssemblyInfoInputs.cache
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/obj/Debug/net8.0/EmployeeManagementSystem.Business.AssemblyInfo.cs
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/obj/Debug/net8.0/EmployeeManagementSystem.Business.csproj.CoreCompileInputs.cache
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/obj/Debug/net8.0/Employee.047D0337.Up2Date
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/obj/Debug/net8.0/EmployeeManagementSystem.Business.dll
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/obj/Debug/net8.0/refint/EmployeeManagementSystem.Business.dll
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/obj/Debug/net8.0/EmployeeManagementSystem.Business.pdb
+/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/obj/Debug/net8.0/ref/EmployeeManagementSystem.Business.dll

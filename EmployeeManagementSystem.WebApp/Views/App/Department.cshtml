@@ -1,0 +1,221 @@
+
+@{
+Layout = "App_Layout";
+}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Personnel Management</h1>
+
+</div>
+
+<!-- Content Row -->
+<div class="row">
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-9 mb-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Total Departments</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><b id="departmentCount"></b></div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-building fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-3">
+                <button class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#newDepartmentModal"><i class="fas fa-building fa-sm text-white-50"></i> New Department Definition</button>
+            </div>
+            <div class="col-12 mt-3">
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Current Department List</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="departmenDataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Department Name</th>
+                                    <th>Number of Employees</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Department Name</th>
+                                    <th>Number of Employees</th>
+                                    <th>Action</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Department-Personnel Occupancy Rates</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <div class="chart-pie pt-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                    <canvas id="departmentPieChar" width="842" height="506" style="display: block; height: 120px !important; width: 200px !important;" class="chartjs-render-monitor"></canvas>
+                </div>
+                <hr>
+                You can observe the occupancy rates of the departments
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="newEmployeeModalDepartmentSeted" style="z-index: 1060 !important;" tabindex="-1" aria-labelledby="employeeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="employeeModalLabel">Department Personnel Definition</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="employeeFormInDepartment">
+                    <div class="mb-3">
+                        <label for="nameInput" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="nameInput" name="name" placeholder="First Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="surnameInput" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="surnameInput" name="surname" placeholder="Last Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phoneInput" class="form-label">Phone</label>
+                        <input type="tel" class="form-control" id="phoneInput" name="phone" placeholder="Phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailInput" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="emailInput" name="email" placeholder="Email">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="newDepartmentModal" tabindex="-1" aria-labelledby="employeeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="employeeModalLabel">New Department Definition</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="departmentForm">
+
+                    <div class="mb-3">
+                        <label for="nameInput" class="form-label">Department Name</label>
+                        <input type="text" class="form-control" id="departmentName" name="departmentName" placeholder="Department Name" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="departmentDetailModal" style="z-index: 1050 !important;" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog record-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titleDepName"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="frmDepartmentDetail">
+                    <div class="row">
+                        <input type="text" class="form-control" id="dtDepartmentId" required hidden>
+
+                        <div class="col-10">
+                            <div class="form-group">
+                                <label for="dtDepartmenName">Department Name</label>
+                                <input type="text" class="form-control" id="dtDepartmenName" required>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <label for="dtDepartmenName"></label>
+                            <button type="submit" class="btn btn-primary btn-block" style="margin-top: 7px;"><i class="fas fa-check"></i> Update</button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+                <div class="row">
+                    <div class="col-12" id="departmentDetailEmployeeAddBtnArea">
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-12 mt-3">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="employeeListOfDepartment" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Phone</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Phone</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="module" src="~/js/Actions/Department.js"></script>
+
+}
