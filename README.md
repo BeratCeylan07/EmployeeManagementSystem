@@ -29,34 +29,36 @@ Proje, Entity Framework kullanılarak Code First yaklaşımı ile geliştirilmi�
 
 ## Kurulum ve Çalıştırma
 1. Proje dosyalarını indirin veya klonlayın.
-2. Visual Studio 2022 ile EmployeeManagementSystem.sln'i başlatın. Görseldeki proje mimarisi sizleri karşılayacak.
-3. 
-<img width="1822" alt="Ekran Resmi 2024-08-17 15 11 50" src="https://github.com/user-attachments/assets/6738c7c4-7311-4003-bb08-be5e6d6a944b">
+2. Visual Studio 2022 ile EmployeeManagementSystem.sln'i başlatın. Görseldeki proje mimarisi sizleri karşılyacak.
+
+<img width="1822" alt="Ekran Resmi 2024-08-17 15 11 50" src="https://github.com/user-attachments/assets/58043dfa-e17b-487b-bd1d-90ddfe06cd8e">
 
 4. Daha sonrasında projeyi ayağa kaldırmak için öncelikle API'yi debug modunda başlatın.
 5. Son olarakta WebApp(MVC-UI)'i başlatarak projeyi kullanmaya başlayabilirsiniz.
 
-<img width="1822" alt="Ekran Resmi 2024-08-19 14 27 21" src="https://github.com/user-attachments/assets/10b2d6c4-39c0-456a-a30b-d2ef04661029">
 ## UI Tanıtım:
 1. Projenin UI katmanında API'ye login oldukdan sonra elde edilen token düzenli olarak async bir şekilde kontrol edilmektedir. API Key kullanım süresi sona erdiği takdirde system otomatik olarak çıkış yapar ve sizi tekrardan giriş yapabileceğiniz Login/Index actionuna gönderir. Burdan tekrar giriş yaparak işlemlerinize devam edebilirsiniz.
 2. Projemizin iki ana modülü bulunmaktadır:
    1) Departman,
    2) Personel
-<img width="1822" alt="Ekran Resmi 2024-08-19 14 27 30" src="https://github.com/user-attachments/assets/e5d2190b-b5f4-4b5b-a681-c27f7215058f">
+<img width="1822" alt="Ekran Resmi 2024-08-19 14 27 21" src="https://github.com/user-attachments/assets/f628fe65-376f-456d-af86-e12fb67dd7ef">
+
+<img width="1822" alt="Ekran Resmi 2024-08-19 14 27 30" src="https://github.com/user-attachments/assets/09795698-2ee4-417e-9e7e-e04d64cdf7a3">
 
 3. Department Operations ekranında sizleri kullanıcı dostu bir arayüz karşılar.
+   <img width="1822" alt="Ekran Resmi 2024-08-19 14 34 16" src="https://github.com/user-attachments/assets/b3f5c0e0-88dc-4f53-98ac-af666cddbc7c">
    
-<img width="1822" alt="Ekran Resmi 2024-08-19 14 27 30" src="https://github.com/user-attachments/assets/6d918ad4-6be9-431d-be60-94988acd3328">
-
-<img width="1822" alt="Ekran Resmi 2024-08-19 13 38 25" src="https://github.com/user-attachments/assets/7d9ab2d1-bb0c-4aaa-9770-5be17735ad59">
+   <img width="1822" alt="Ekran Resmi 2024-08-19 13 38 32" src="https://github.com/user-attachments/assets/f6343ac5-dd98-4e75-83bb-900bf1800bda">
 
 4. Employee Operations ekranında sizleri kullanıcı dostu bir arayüz karşılar.
 
-<img width="1822" alt="Ekran Resmi 2024-08-19 13 38 36" src="https://github.com/user-attachments/assets/0cc79664-18bf-4741-b991-7ea8a8940b95">
+<img width="1822" alt="Ekran Resmi 2024-08-19 13 38 36" src="https://github.com/user-attachments/assets/c872dc49-3e87-41e9-a1ba-93fc501da5a2">
+
+<img width="1822" alt="Ekran Resmi 2024-08-19 13 38 41" src="https://github.com/user-attachments/assets/72aa2fae-8b52-42a1-9b23-d56fc5eb809d">
 
 6. Sisteme yeni bir personel ekleyebilmeniz için öncelikle o personelin tanımlanacağı bir departman olmak zorundadır. Her personel ilgili 'Employees' tablosunda bir departmentId alır.
 
-<img width="1822" alt="Ekran Resmi 2024-08-19 13 38 38" src="https://github.com/user-attachments/assets/e98ec8a7-d841-4595-acb7-98c666b82f7e">
+<img width="1822" alt="Ekran Resmi 2024-08-19 13 38 38" src="https://github.com/user-attachments/assets/38dbbd25-de88-4be2-a385-cf52020e4ed8">
 
 7. Sistemde özellikle silme işlemleri için bazı önlemler yer almaktadır. Örneğin bir departmanı silmek istediğinizde o departmana tanımlı olan Personel kayıtlarının olmaması gerekir.
 Eğer böyle bir durum varsa:
@@ -64,7 +66,7 @@ Eğer böyle bir durum varsa:
 - İlgili departmana kayıtlı olan tüm personellerin başka bir departmana aktarılması,
 gerekir. 
 
-<img width="1822" alt="Ekran Resmi 2024-08-19 13 38 22" src="https://github.com/user-attachments/assets/781f6d0c-bcbf-4496-97fa-ba54f24cf29a">
+<img width="1822" alt="Ekran Resmi 2024-08-19 13 38 22" src="https://github.com/user-attachments/assets/a16c7105-4124-47ee-b9e2-de0b80c324aa">
 
 8. Entityler BaseEntityden impelemente olmaktadır. BaseEntity'de, ID, IsCreaatedDate, IsModifiedDate, IsCreatedUserId, IsModifiedUserId field'ları mevcuttur.
 Create & update işlemlerinde bu field'lar da ilgili tarih ve userid ile set edilmektedir.
