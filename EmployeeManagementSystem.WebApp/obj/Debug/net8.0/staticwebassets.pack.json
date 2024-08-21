@@ -33,6 +33,10 @@
       "PackagePath": "staticwebassets/js/Actions/Employee.js"
     },
     {
+      "Id": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/wwwroot/js/Actions/EmployeePayment.js",
+      "PackagePath": "staticwebassets/js/Actions/EmployeePayment.js"
+    },
+    {
       "Id": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/wwwroot/js/ajax/GenericAjax.js",
       "PackagePath": "staticwebassets/js/ajax/GenericAjax.js"
     },

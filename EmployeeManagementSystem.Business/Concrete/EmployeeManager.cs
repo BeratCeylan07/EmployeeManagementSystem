@@ -68,7 +68,7 @@ public class EmployeeManager : IEmployeeService
 
     public async Task<List<EmployeeWithDepartmentDto>> GetAllEmployeesAsync()
     {
-        var employees = await _employeeRepository.GetAllAsync();
+        var employees = await _employeeRepository.GetAllEmployeesAsync();
         return _mapper.Map<List<EmployeeWithDepartmentDto>>(employees);
     }
 

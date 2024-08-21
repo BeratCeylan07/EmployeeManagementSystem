@@ -31,20 +31,21 @@ public class MapProfile : Profile
        
         CreateMap<Department, DepartmentDetailDto>();
 
-        // Employee -> EmployeeDto mapping'i
         CreateMap<Employee, EmployeeDto>();
         
-        // Department -> DepartmentDetailDto mapping'i (Employees özelliği için özel mapping)
         CreateMap<Department, DepartmentDetailDto>()
             .ForMember(dest => dest.Employees, opt => opt.MapFrom(src => src.Employees));
+        
         CreateMap<Department, DepartmentWithEmployeeCountDto>()
             .ForMember(dest => dest.EmployeeCount, opt => opt.MapFrom(src => src.Employees.Count));
+        
         CreateMap<Employee, EmployeeDetailDto>()
             .ForMember(dest => dest.DepartmentName, opt => opt.MapFrom(src => src.Department.Name))
             .ForMember(dest => dest.departmenId, opt => opt.MapFrom(src => src.Department.ID))
             .ForMember(dest => dest.Payments, opt => opt.MapFrom(src => src.EmployeePayments));
         
         CreateMap<UpdateDepartmentDto, Department>();
+        
         CreateMap<UpdateEmployeeDto, Employee>();
         
         CreateMap<EmployeePayment, EmployeePaymentDto>()

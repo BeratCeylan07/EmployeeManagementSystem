@@ -20,5 +20,10 @@ namespace EmployeeManagementSystem.WebApp.Controllers
             return View();
         }
 
+        public IActionResult Payment()
+        {
+            return View();
+        }
+
     }
 }

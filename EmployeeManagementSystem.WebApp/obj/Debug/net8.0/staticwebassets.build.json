@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4PWCu8/2Pivi+4dC2vvM5SEZ3mdc3lsKDzzz2AzQdJk=",
+  "Hash": "NMkZmNtudsJ7pS98DbVAmdpU0IHnUZhBswlWi0uH9nA=",
   "Source": "EmployeeManagementSystem.WebApp",
   "BasePath": "_content/EmployeeManagementSystem.WebApp",
   "Mode": "Default",
@@ -186,6 +186,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/Actions/Employee.js"
+    },
+    {
+      "Identity": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/wwwroot/js/Actions/EmployeePayment.js",
+      "SourceId": "EmployeeManagementSystem.WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/wwwroot/",
+      "BasePath": "_content/EmployeeManagementSystem.WebApp",
+      "RelativePath": "js/Actions/EmployeePayment.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/Actions/EmployeePayment.js"
     },
     {
       "Identity": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/wwwroot/js/ajax/GenericAjax.js",

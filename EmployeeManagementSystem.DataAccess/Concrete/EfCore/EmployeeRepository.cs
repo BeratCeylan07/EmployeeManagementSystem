@@ -6,6 +6,7 @@ namespace EmployeeManagementSystem.DataAccess.Concrete.EfCore;
 
 public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
 {
+    
     private readonly EmployeeDbContext _context;
 
     public EmployeeRepository(EmployeeDbContext context) : base(context)
