@@ -17,7 +17,7 @@ public class DepartmentManager : IDepartmentService
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
-    public bool Add(AddDepartmentDto departmentDto)
+    public async Task<bool> Add(AddDepartmentDto departmentDto)
     {
         if (departmentDto == null)
         {
@@ -26,21 +26,21 @@ public class DepartmentManager : IDepartmentService
 
         Department department = _mapper.Map<Department>(departmentDto);
         
-        int result = _departmentRepository.Add(department);
+        int result = await _departmentRepository.Add(department);
         return result > 0;
     }
-    public List<DepartmentWithEmployeeCountDto> GetAllDepartmentsWithEmployeeCount()
+    public async Task<IEnumerable<DepartmentWithEmployeeCountDto>> GetAllDepartmentsWithEmployeeCount()
     {
-        var departments = _departmentRepository.GetAllWithEmployeeCount();
+        var departments = await _departmentRepository.GetAllWithEmployeeCount();
         return _mapper.Map<List<DepartmentWithEmployeeCountDto>>(departments);
     }
-    public List<Department> GetAllDepartments()
+    public async Task<IEnumerable<Department>> GetAllDepartments()
     {
-        return _departmentRepository.GetAll();
+        return await _departmentRepository.GetAllAsync();
     }
-    public DepartmentDetailDto GetDepartmentWithEmployees(int departmentId)
+    public async Task<DepartmentDetailDto> GetDepartmentWithEmployees(int departmentId)
     {
-        var department = _departmentRepository.GetDepartmentWithEmployees(departmentId);
+        var department = await _departmentRepository.GetDepartmentWithEmployees(departmentId);
         if (department == null)
         {
             return null;
@@ -48,43 +48,44 @@ public class DepartmentManager : IDepartmentService
         var departmentDetailDto = _mapper.Map<DepartmentDetailDto>(department);
         return departmentDetailDto;
     }
-    public bool Update(UpdateDepartmentDto updateDepartmentDto)
+    public async Task<bool> Update(UpdateDepartmentDto updateDepartmentDto)
     {
         if (updateDepartmentDto == null)
         {
             throw new ArgumentNullException(nameof(updateDepartmentDto));
         }
 
-        var existingDepartment = _departmentRepository.GetById(updateDepartmentDto.ID);
+        var existingDepartment = await _departmentRepository.GetById(updateDepartmentDto.ID);
         if (existingDepartment == null)
         {
             return false;
         }
 
-        _mapper.Map(updateDepartmentDto, existingDepartment);
     
         // Güncelleme tarihini ve kullanıcısını ayarla
+        _mapper.Map(updateDepartmentDto, existingDepartment);
         existingDepartment.ISMODIFIEDDATE = DateTime.Now;
         existingDepartment.ISMODIFIEDUSERID = updateDepartmentDto.UserId;
 
-        int result = _departmentRepository.Update(existingDepartment);
+
+        int result = await _departmentRepository.Update(existingDepartment);
         return result > 0;
     }
 
-    public bool Delete(int departmentId)
+    public async Task<bool> Delete(int departmentId)
     {
-        if (_departmentRepository.HasEmployees(departmentId))
+        if (await _departmentRepository.HasEmployees(departmentId))
         {
             throw new InvalidOperationException("Cannot delete department with existing employees.");
         }
 
-        var department = _departmentRepository.GetById(departmentId);
+        var department = await _departmentRepository.GetById(departmentId);
         if (department == null)
         {
             return false;
         }
 
-        int result = _departmentRepository.Delete(department);
+        int result = await _departmentRepository.Delete(department);
         return result > 0;
     }
     

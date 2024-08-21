@@ -7469,11 +7469,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.API/EmployeeManagementSystem.API.csproj",
+      "projectUniqueName": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.API/EmployeeManagementSystem.API.csproj",
       "projectName": "EmployeeManagementSystem.API",
-      "projectPath": "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.API/EmployeeManagementSystem.API.csproj",
+      "projectPath": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.API/EmployeeManagementSystem.API.csproj",
       "packagesPath": "/Users/beratceylan/.nuget/packages/",
-      "outputPath": "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.API/obj/",
+      "outputPath": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/beratceylan/.nuget/NuGet/NuGet.Config"
@@ -7488,8 +7488,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/EmployeeManagementSystem.Business.csproj": {
-              "projectPath": "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Business/EmployeeManagementSystem.Business.csproj"
+            "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.Business/EmployeeManagementSystem.Business.csproj": {
+              "projectPath": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.Business/EmployeeManagementSystem.Business.csproj"
             }
           }
         }

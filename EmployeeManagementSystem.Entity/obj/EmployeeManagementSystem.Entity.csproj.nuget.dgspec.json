@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/EmployeeManagementSystem.Entity.csproj": {}
+    "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.Entity/EmployeeManagementSystem.Entity.csproj": {}
   },
   "projects": {
-    "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/EmployeeManagementSystem.Entity.csproj": {
+    "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.Entity/EmployeeManagementSystem.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/EmployeeManagementSystem.Entity.csproj",
+        "projectUniqueName": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.Entity/EmployeeManagementSystem.Entity.csproj",
         "projectName": "EmployeeManagementSystem.Entity",
-        "projectPath": "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/EmployeeManagementSystem.Entity.csproj",
+        "projectPath": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.Entity/EmployeeManagementSystem.Entity.csproj",
         "packagesPath": "/Users/beratceylan/.nuget/packages/",
-        "outputPath": "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/obj/",
+        "outputPath": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.Entity/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/beratceylan/.nuget/NuGet/NuGet.Config"

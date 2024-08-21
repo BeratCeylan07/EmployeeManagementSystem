@@ -5972,11 +5972,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/EmployeeManagementSystem.WebApp.csproj",
+      "projectUniqueName": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/EmployeeManagementSystem.WebApp.csproj",
       "projectName": "EmployeeManagementSystem.WebApp",
-      "projectPath": "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/EmployeeManagementSystem.WebApp.csproj",
+      "projectPath": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/EmployeeManagementSystem.WebApp.csproj",
       "packagesPath": "/Users/beratceylan/.nuget/packages/",
-      "outputPath": "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/obj/",
+      "outputPath": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/beratceylan/.nuget/NuGet/NuGet.Config"

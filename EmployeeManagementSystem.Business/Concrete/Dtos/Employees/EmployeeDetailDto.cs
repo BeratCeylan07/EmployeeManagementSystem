@@ -1,3 +1,4 @@
+using EmployeeManagementSystem.Business.Concrete.Dtos.EmployeePayments;
 using EmployeeManagementSystem.Entity.Concrete;
 
 namespace EmployeeManagementSystem.Business.Concrete.Dtos.Employees;
@@ -15,9 +16,3 @@ public class EmployeeDetailDto
     public List<EmployeePaymentDto> Payments { get; set; }
 }
 
-public class EmployeePaymentDto
-{
-    public int Id { get; set; }
-    public decimal Amount { get; set; }
-    public DateTime PaymentDate { get; set; }
-}

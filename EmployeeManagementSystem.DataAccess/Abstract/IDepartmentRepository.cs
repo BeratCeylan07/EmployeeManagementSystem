@@ -4,9 +4,9 @@ namespace EmployeeManagementSystem.DataAccess.Abstract;
 
 public interface IDepartmentRepository : IBaseRepository<Department>
 {
-    Department GetDepartmentWithEmployees(int departmentId);
-    List<Department> GetAllWithEmployeeCount();
+    Task<Department> GetDepartmentWithEmployees(int departmentId);
+    Task<List<Department>> GetAllWithEmployeeCount();
     
-    bool HasEmployees(int departmentId);
+    Task<bool> HasEmployees(int departmentId);
 
 }

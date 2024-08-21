@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "l1FYaYEgLpM=",
+  "dgSpecHash": "j3ijzBgTaqo=",
   "success": true,
-  "projectFilePath": "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/EmployeeManagementSystem.WebApp.csproj",
+  "projectFilePath": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/EmployeeManagementSystem.WebApp.csproj",
   "expectedPackageFiles": [
     "/Users/beratceylan/.nuget/packages/humanizer/2.14.1/humanizer.2.14.1.nupkg.sha512",
     "/Users/beratceylan/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",

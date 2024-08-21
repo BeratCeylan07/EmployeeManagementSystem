@@ -5,13 +5,13 @@ namespace EmployeeManagementSystem.Business.Abstract;
 
 public interface IDepartmentService
 {
-    bool Add(AddDepartmentDto addDepartmentDto);
-    bool Update(UpdateDepartmentDto updateDepartmentDto);
-    bool Delete(int departmentId);
+    Task<bool> Add(AddDepartmentDto addDepartmentDto);
+    Task<bool> Update(UpdateDepartmentDto updateDepartmentDto);
+    Task<bool> Delete(int departmentId);
 
-    List<Department> GetAllDepartments();
-    List<DepartmentWithEmployeeCountDto> GetAllDepartmentsWithEmployeeCount();
+    Task<IEnumerable<Department>> GetAllDepartments();
+    Task<IEnumerable<DepartmentWithEmployeeCountDto>> GetAllDepartmentsWithEmployeeCount();
 
-    DepartmentDetailDto GetDepartmentWithEmployees(int departmentId);
+    Task<DepartmentDetailDto> GetDepartmentWithEmployees(int departmentId);
 
 }

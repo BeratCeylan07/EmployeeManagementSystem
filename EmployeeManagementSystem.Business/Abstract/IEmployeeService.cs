@@ -5,10 +5,10 @@ namespace EmployeeManagementSystem.Business.Abstract;
 
 public interface IEmployeeService
 {
-    bool Add(AddEmployeeDto employee);
-    bool Update(UpdateEmployeeDto updateEmployee);
-    bool Delete(int employeeId);
-    List<EmployeeWithDepartmentDto> GetAllEmployees();
-    EmployeeDetailDto GetEmployeeDetails(int employeeId);
-    LoginResultDto Login(LoginRequestDto loginRequest);
+    Task<bool> AddAsync(AddEmployeeDto employee);
+    Task<bool> UpdateAsync(UpdateEmployeeDto updateEmployee);
+    Task<bool> DeleteAsync(int employeeId);
+    Task<List<EmployeeWithDepartmentDto>> GetAllEmployeesAsync();
+    Task<EmployeeDetailDto> GetEmployeeDetailsAsync(int employeeId);
+    Task<LoginResultDto> LoginAsync(LoginRequestDto loginRequest);
 }

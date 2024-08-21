@@ -12,24 +12,24 @@ public class DepartmentRepository : BaseRepository<Department>,IDepartmentReposi
     {
         _context = context;
     }
-    public Department GetDepartmentWithEmployees(int departmentId)
+    public async Task<Department> GetDepartmentWithEmployees(int departmentId)
     {
-        return _context.Departments
+        return await _context.Departments
             .Include(d => d.Employees)
-            .FirstOrDefault(d => d.ID == departmentId);
+            .FirstOrDefaultAsync(d => d.ID == departmentId);
     }
-    public List<Department> GetAllWithEmployeeCount()
+    public async Task<List<Department>> GetAllWithEmployeeCount()
     {
-        return _context.Departments
+        return await _context.Departments
             .Select(d => new Department
             {
                 ID = d.ID,
                 Name = d.Name,
                 Employees = d.Employees.ToList() // Bu, Entity Framework'ün çalışan sayısını hesaplamasını sağlar
             })
-            .ToList();
+            .ToListAsync();
     }
-    public override int Update(Department entity)
+    public override async Task<int> Update(Department entity)
     {
         var existingEntity = _context.Set<Department>().Find(entity.ID);
         if (existingEntity != null)
@@ -40,14 +40,14 @@ public class DepartmentRepository : BaseRepository<Department>,IDepartmentReposi
             existingEntity.ISMODIFIEDUSERID = entity.ISMODIFIEDUSERID;
         }
 
-        return _context.SaveChanges();
+        return await _context.SaveChangesAsync();
     }
-    public bool HasEmployees(int departmentId)
+    public async Task<bool> HasEmployees(int departmentId)
     {
-        return _context.Employees.Any(e => e.DepartmentId == departmentId);
+        return await _context.Employees.AnyAsync(e => e.DepartmentId == departmentId);
     }
-    public override List<Department> GetAll()
+    public async Task<IEnumerable<Department>> GetallAsync()
     {
-        return _context.Departments.ToList();
+        return await _context.Departments.ToListAsync();
     }
 }

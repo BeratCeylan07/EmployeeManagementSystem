@@ -19,9 +19,9 @@ namespace EmployeeManagementSystem.API.Controllers
             _departmentService = departmentService;
         }
         [HttpGet]
-        public ActionResult<DepartmentDetailDto> GetDepartmentWithEmployees(int id)
+        public async Task<ActionResult<DepartmentDetailDto>> GetDepartmentWithEmployees(int id)
         {
-            var departmentDetail = _departmentService.GetDepartmentWithEmployees(id);
+            var departmentDetail = await _departmentService.GetDepartmentWithEmployees(id);
 
             if (departmentDetail == null)
             {
@@ -31,9 +31,9 @@ namespace EmployeeManagementSystem.API.Controllers
             return Ok(departmentDetail);
         }
         [HttpGet]
-        public IActionResult GetAllDepartmentsWithEmployeeCount()
+        public async Task<IActionResult> GetAllDepartmentsWithEmployeeCount()
         {
-            var departments = _departmentService.GetAllDepartmentsWithEmployeeCount();
+            var departments = await _departmentService.GetAllDepartmentsWithEmployeeCount();
             return Ok(departments);
         }
         [HttpGet]
@@ -43,7 +43,7 @@ namespace EmployeeManagementSystem.API.Controllers
             return Ok(departments);
         }
         [HttpPost]
-        public IActionResult CreateDepartment([FromBody] AddDepartmentDto request)
+        public async Task<IActionResult> CreateDepartment([FromBody] AddDepartmentDto request)
         {
             if (request == null)
             {
@@ -52,7 +52,7 @@ namespace EmployeeManagementSystem.API.Controllers
 
             try
             {
-                bool result = _departmentService.Add(request);
+                bool result = await _departmentService.Add(request);
                 if (result)
                 {
                     return Ok("Department created successfully");
@@ -69,7 +69,7 @@ namespace EmployeeManagementSystem.API.Controllers
             }
         }
         [HttpPut("{id}")]
-        public IActionResult UpdateDepartment(int id, [FromBody] UpdateDepartmentDto updateDepartmentDto)
+        public async Task<IActionResult> UpdateDepartment(int id, [FromBody] UpdateDepartmentDto updateDepartmentDto)
         {
             if (id != updateDepartmentDto.ID)
             {
@@ -77,11 +77,11 @@ namespace EmployeeManagementSystem.API.Controllers
             }
             
 
-            bool result = _departmentService.Update(updateDepartmentDto);
+            bool result = await _departmentService.Update(updateDepartmentDto);
 
             if (result)
             {
-                return NoContent(); // 204 No Content
+                return NoContent();
             }
             else
             {
@@ -89,11 +89,11 @@ namespace EmployeeManagementSystem.API.Controllers
             }
         }
         [HttpDelete("{id}")]
-        public IActionResult DeleteDepartment(int id)
+        public async Task<IActionResult> DeleteDepartment(int id)
         {
             try
             {
-                bool result = _departmentService.Delete(id);
+                bool result = await _departmentService.Delete(id);
 
                 if (result)
                 {

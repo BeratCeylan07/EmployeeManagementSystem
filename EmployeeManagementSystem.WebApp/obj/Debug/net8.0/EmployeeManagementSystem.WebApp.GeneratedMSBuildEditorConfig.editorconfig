@@ -17,39 +17,39 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = EmployeeManagementSystem.WebApp
 build_property.RootNamespace = EmployeeManagementSystem.WebApp
-build_property.ProjectDir = /Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/
+build_property.ProjectDir = /Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = /Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.WebApp
+build_property.MSBuildProjectDirectory = /Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/Pages/Login/Index.cshtml]
+[/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/Pages/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4vSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/Views/App/Department.cshtml]
+[/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/Views/App/Department.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXBwL0RlcGFydG1lbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/Views/App/Employee.cshtml]
+[/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/Views/App/Employee.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXBwL0VtcGxveWVlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/Views/App/Index.cshtml]
+[/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/Views/App/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXBwL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/Views/Login/Index.cshtml]
+[/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTG9naW4vSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/Views/Shared/App_Layout.cshtml]
+[/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/Views/Shared/App_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0FwcF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-u8b8265i8h
 
-[/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/Views/Shared/Login_Layout.cshtml]
+[/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/Views/Shared/Login_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0xvZ2luX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-a3133t2vap

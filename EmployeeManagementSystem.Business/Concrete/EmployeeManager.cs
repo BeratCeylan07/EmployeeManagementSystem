@@ -11,15 +11,17 @@ public class EmployeeManager : IEmployeeService
     private readonly IEmployeeRepository _employeeRepository;
     private readonly IMapper _mapper;
     private readonly JwtService _jwtService;
+
     public EmployeeManager(IEmployeeRepository employeeRepository, IMapper mapper, JwtService jwtService)
     {
         _employeeRepository = employeeRepository;
         _mapper = mapper;
-        _jwtService= jwtService;
+        _jwtService = jwtService;
     }
-    public EmployeeDetailDto GetEmployeeDetails(int employeeId)
+
+    public async Task<EmployeeDetailDto> GetEmployeeDetailsAsync(int employeeId)
     {
-        var employee = _employeeRepository.GetEmployeeWithDetails(employeeId);
+        var employee = await _employeeRepository.GetEmployeeWithDetailsAsync(employeeId);
         if (employee == null)
         {
             return null;
@@ -27,29 +29,31 @@ public class EmployeeManager : IEmployeeService
 
         return _mapper.Map<EmployeeDetailDto>(employee);
     }
-    public bool Update(UpdateEmployeeDto updateEmployeeDto)
+
+    public async Task<bool> UpdateAsync(UpdateEmployeeDto updateEmployeeDto)
     {
         if (updateEmployeeDto == null)
         {
             throw new ArgumentNullException(nameof(updateEmployeeDto));
         }
 
-        var existingEmployee = _employeeRepository.GetById(updateEmployeeDto.Id);
+        var existingEmployee = await _employeeRepository.GetById(updateEmployeeDto.Id);
         if (existingEmployee == null)
         {
             return false;
         }
 
         _mapper.Map(updateEmployeeDto, existingEmployee);
-    
+
         // Güncelleme tarihini ve kullanıcısını ayarla
         existingEmployee.ISMODIFIEDDATE = DateTime.Now;
         existingEmployee.ISMODIFIEDUSERID = updateEmployeeDto.userID;
 
-        int result = _employeeRepository.Update(existingEmployee);
+        int result = await _employeeRepository.Update(existingEmployee);
         return result > 0;
     }
-    public bool Add(AddEmployeeDto employeeDto)
+
+    public async Task<bool> AddAsync(AddEmployeeDto employeeDto)
     {
         if (employeeDto == null)
         {
@@ -57,35 +61,37 @@ public class EmployeeManager : IEmployeeService
         }
 
         Employee employee = _mapper.Map<Employee>(employeeDto);
-        
-        int result = _employeeRepository.Add(employee);
-        return result > 0;    
+
+        int result = await _employeeRepository.Add(employee);
+        return result > 0;
     }
 
-    public List<EmployeeWithDepartmentDto> GetAllEmployees()
+    public async Task<List<EmployeeWithDepartmentDto>> GetAllEmployeesAsync()
     {
-        var employees = _employeeRepository.GetAll();
+        var employees = await _employeeRepository.GetAllAsync();
         return _mapper.Map<List<EmployeeWithDepartmentDto>>(employees);
     }
-    public bool Delete(int employeeId)
+
+    public async Task<bool> DeleteAsync(int employeeId)
     {
-        if (_employeeRepository.HasEmployees(employeeId))
+        if (await _employeeRepository.HasEmployeesAsync(employeeId))
         {
             throw new InvalidOperationException("Cannot delete Employee with existing employees.");
         }
 
-        var employee = _employeeRepository.GetById(employeeId);
+        var employee = await _employeeRepository.GetById(employeeId);
         if (employee == null)
         {
             return false;
         }
 
-        int result = _employeeRepository.Delete(employee);
+        int result = await _employeeRepository.Delete(employee);
         return result > 0;
     }
-    public LoginResultDto Login(LoginRequestDto loginRequest)
+
+    public async Task<LoginResultDto> LoginAsync(LoginRequestDto loginRequest)
     {
-        var employee = _employeeRepository.GetByEmailAndPassword(loginRequest.Email, loginRequest.Password);
+        var employee = await _employeeRepository.GetByEmailAndPasswordAsync(loginRequest.Email, loginRequest.Password);
 
         if (employee == null)
         {
@@ -104,5 +110,4 @@ public class EmployeeManager : IEmployeeService
             Token = token
         };
     }
-    
 }

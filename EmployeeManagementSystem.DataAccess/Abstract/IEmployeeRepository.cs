@@ -4,10 +4,9 @@ namespace EmployeeManagementSystem.DataAccess.Abstract;
 
 public interface IEmployeeRepository : IBaseRepository<Employee>
 {
-    Employee GetEmployeeWithDetails(int employeeId);
-    Employee GetByEmailAndPassword(string email, string password);
-
-    bool HasEmployees(int employeeId);
-
+    Task<Employee> GetEmployeeWithDetailsAsync(int employeeId);
+    Task<Employee> GetByEmailAndPasswordAsync(string email, string password);
+    Task<bool> HasEmployeesAsync(int employeeId);
+    
 
 }

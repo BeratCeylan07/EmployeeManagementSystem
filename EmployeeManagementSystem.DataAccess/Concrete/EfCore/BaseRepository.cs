@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 using EmployeeManagementSystem.DataAccess.Abstract;
 using EmployeeManagementSystem.Entity.Concrete;
 using EmployeeManagementSystem.Entity.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeManagementSystem.DataAccess.Concrete.EfCore;
 
@@ -13,38 +14,34 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
     {
         _context = context;
     }
-    public int Add(TEntity entity)
+    
+    public async Task<int> Add(TEntity entity)
     {
-        _context.Set<TEntity>().Add(entity); 
-        return _context.SaveChanges();
+        await _context.Set<TEntity>().AddAsync(entity); 
+        return await _context.SaveChangesAsync();
     }
-    public virtual int Update(TEntity entity)
+    public virtual async Task<int> Update(TEntity entity)
     {
         _context.Set<TEntity>().Update(entity); 
-        return _context.SaveChanges();
+        return await _context.SaveChangesAsync();
     }
-    public int Delete(TEntity entity)
+    public async Task<int> Delete(TEntity entity)
     {
         _context.Set<TEntity>().Remove(entity); 
-        return _context.SaveChanges();
+        return await _context.SaveChangesAsync();
     }
-    public virtual List<TEntity> GetAll()
+    public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
     {
-        return _context.Set<TEntity>().ToList();
-    }
-
-    public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter)
-    {
-        return _context.Set<TEntity>().Where(filter).ToList();
+        return await _context.Set<TEntity>().ToListAsync();
     }
 
-    public TEntity? GetById(int id)
+    public async Task<TEntity?> GetById(int id)
     {
-        return _context.Set<TEntity>().Find(id);
+        return await _context.Set<TEntity>().FindAsync(id);
     }
 
-    public TEntity? Get(Expression<Func<TEntity, bool>> filter)
+    public async Task<TEntity?> Get(Expression<Func<TEntity, bool>> filter)
     {
-        return _context.Set<TEntity>().FirstOrDefault(filter);
+        return await _context.Set<TEntity>().FirstOrDefaultAsync(filter);
     }
 }

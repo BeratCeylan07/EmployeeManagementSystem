@@ -12,16 +12,18 @@ public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
     {
         _context = context;
     }
-    public Employee GetEmployeeWithDetails(int employeeId)
+
+    public async Task<Employee> GetEmployeeWithDetailsAsync(int employeeId)
     {
-        return _context.Employees
+        return await _context.Employees
             .Include(e => e.Department)
             .Include(e => e.EmployeePayments)
-            .FirstOrDefault(e => e.ID == employeeId);
+            .FirstOrDefaultAsync(e => e.ID == employeeId);
     }
-    public override int Update(Employee entity)
+
+    public async  Task<int> UpdateAsync(Employee entity)
     {
-        var existingEntity = _context.Set<Employee>().Find(entity.ID);
+        var existingEntity = await _context.Set<Employee>().FindAsync(entity.ID);
         if (existingEntity != null)
         {
             _context.Entry(existingEntity).CurrentValues.SetValues(entity);
@@ -30,20 +32,25 @@ public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
             existingEntity.ISMODIFIEDUSERID = entity.ISMODIFIEDUSERID;
         }
 
-        return _context.SaveChanges();
+        return await _context.SaveChangesAsync();
     }
-    public bool HasEmployees(int employeeId)
+
+    public async Task<bool> HasEmployeesAsync(int employeeId)
     {
-        return _context.EmployeePayments.Any(e => e.EmployeeId == employeeId);
+        return await _context.EmployeePayments.AnyAsync(e => e.EmployeeId == employeeId);
     }
-    public override List<Employee> GetAll()
+
+    public async Task<List<Employee>> GetAllEmployeesAsync()
     {
-        return _context.Employees.Include(e => e.Department).ToList();
-    }
-    public Employee GetByEmailAndPassword(string email, string password)
-    {
-        return _context.Employees
-            .FirstOrDefault(e => e.Email == email && e.Password == password);
+        return await _context.Employees
+            .Include(e => e.Department)
+            .ToListAsync();
     }
     
+
+    public async Task<Employee> GetByEmailAndPasswordAsync(string email, string password)
+    {
+        return await _context.Employees
+            .FirstOrDefaultAsync(e => e.Email == email && e.Password == password);
+    }
 }

@@ -8,6 +8,7 @@ namespace EmployeeManagementSystem.API.Controllers
 {
     [Route("api/employee/[action]")]
     [ApiController]
+    [Authorize]
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeService _employeeService;
@@ -20,7 +21,7 @@ namespace EmployeeManagementSystem.API.Controllers
         }
         
         [HttpPost]
-        public IActionResult NewEmployee([FromBody] AddEmployeeDto request)
+        public async Task<IActionResult> NewEmployee([FromBody] AddEmployeeDto request)
         {
             if (request == null)
             {
@@ -29,7 +30,7 @@ namespace EmployeeManagementSystem.API.Controllers
 
             try
             {
-                bool result = _employeeService.Add(request);
+                bool result = await _employeeService.AddAsync(request);
                 if (result)
                 {
                     return Ok("Employee Added successfully");
@@ -46,9 +47,9 @@ namespace EmployeeManagementSystem.API.Controllers
             }
         }
         [HttpGet]
-        public ActionResult<EmployeeDetailDto> GetEmployeeDetails(int id)
+        public async Task<ActionResult<EmployeeDetailDto>> GetEmployeeDetails(int id)
         {
-            var employeeDetails = _employeeService.GetEmployeeDetails(id);
+            var employeeDetails = await _employeeService.GetEmployeeDetailsAsync(id);
             if (employeeDetails == null)
             {
                 return NotFound();
@@ -57,13 +58,13 @@ namespace EmployeeManagementSystem.API.Controllers
             return Ok(employeeDetails);
         }
         [HttpGet]
-        public IActionResult GetAllEmployees()
+        public async Task<IActionResult> GetAllEmployees()
         {
-            var employees = _employeeService.GetAllEmployees();
+            var employees = await _employeeService.GetAllEmployeesAsync();
             return Ok(employees);
         }
         [HttpPut("{id}")]
-        public IActionResult updateEmployee(int id, [FromBody] UpdateEmployeeDto updateemployeeDto)
+        public async Task<IActionResult> updateEmployee(int id, [FromBody] UpdateEmployeeDto updateemployeeDto)
         {
             if (id != updateemployeeDto.Id)
             {
@@ -72,7 +73,7 @@ namespace EmployeeManagementSystem.API.Controllers
 
           
 
-            bool result = _employeeService.Update(updateemployeeDto);
+            bool result = await _employeeService.UpdateAsync(updateemployeeDto);
 
             if (result)
             {
@@ -86,11 +87,11 @@ namespace EmployeeManagementSystem.API.Controllers
 
         // DELETE endpoint'i
         [HttpDelete("{id}")]
-        public IActionResult DeleteEmployee(int id)
+        public async Task<IActionResult> DeleteEmployee(int id)
         {
             try
             {
-                bool result = _employeeService.Delete(id);
+                bool result = await _employeeService.DeleteAsync(id);
 
                 if (result)
                 {

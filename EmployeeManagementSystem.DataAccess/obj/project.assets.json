@@ -2595,11 +2595,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/EmployeeManagementSystem.DataAccess.csproj",
+      "projectUniqueName": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/EmployeeManagementSystem.DataAccess.csproj",
       "projectName": "EmployeeManagementSystem.DataAccess",
-      "projectPath": "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/EmployeeManagementSystem.DataAccess.csproj",
+      "projectPath": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/EmployeeManagementSystem.DataAccess.csproj",
       "packagesPath": "/Users/beratceylan/.nuget/packages/",
-      "outputPath": "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/obj/",
+      "outputPath": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.DataAccess/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/beratceylan/.nuget/NuGet/NuGet.Config"
@@ -2614,8 +2614,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/EmployeeManagementSystem.Entity.csproj": {
-              "projectPath": "/Users/beratceylan/RiderProjects/EmployeeManagementSystem/EmployeeManagementSystem.Entity/EmployeeManagementSystem.Entity.csproj"
+            "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.Entity/EmployeeManagementSystem.Entity.csproj": {
+              "projectPath": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.Entity/EmployeeManagementSystem.Entity.csproj"
             }
           }
         }

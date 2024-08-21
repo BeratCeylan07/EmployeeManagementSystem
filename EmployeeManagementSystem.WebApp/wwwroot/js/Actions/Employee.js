@@ -260,8 +260,8 @@ export async function getDepartmentListForSelect(){
         'GET',
         null,
         function(response) {
-            const departments = response;
-
+            const departments = response.result;
+            console.log(departments);
             const selectElementNewEmployee = document.getElementById('departmentSelect');
             selectElementNewEmployee.innerHTML = '';
             const selectElementDetailEmployee = document.getElementById('dtEmployeedepartmentSelect');
@@ -272,9 +272,12 @@ export async function getDepartmentListForSelect(){
 
                 option.value = department.id;
                 option.textContent = department.name;
+                
                 option2.value = department.id;
                 option2.textContent = department.name;
+                
                 selectElementNewEmployee.append(option);
+                
                 selectElementDetailEmployee.append(option2);
 
             });

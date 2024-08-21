@@ -17,14 +17,14 @@ namespace EmployeeManagementSystem.API.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginRequestDto loginRequest)
+        public async Task<IActionResult> Login([FromBody] LoginRequestDto loginRequest)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var result = _employeeService.Login(loginRequest);
+            var result = await _employeeService.LoginAsync(loginRequest);
 
             if (result.Success)
             {
