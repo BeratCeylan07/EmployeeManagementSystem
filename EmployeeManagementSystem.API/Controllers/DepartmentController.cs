@@ -23,7 +23,7 @@ namespace EmployeeManagementSystem.API.Controllers
         {
             var departmentDetail = await _departmentService.GetDepartmentWithEmployees(id);
 
-            if (departmentDetail == null)
+            if (departmentDetail is null)
             {
                 return NotFound();
             }
@@ -34,6 +34,12 @@ namespace EmployeeManagementSystem.API.Controllers
         public async Task<IActionResult> GetAllDepartmentsWithEmployeeCount()
         {
             var departments = await _departmentService.GetAllDepartmentsWithEmployeeCount();
+            return Ok(departments);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAllDepartmentsSalaryTotal()
+        {
+            var departments = await _departmentService.GetAllDepartmentsWithSalaryTotal();
             return Ok(departments);
         }
         [HttpGet]

@@ -1,14 +1,20 @@
-export function createDepartmentPieChar(data) {
-    // Verileri filtreleme: count değeri sıfır olanları ayıklama
-    const filteredData = data.filter(department => department.employeeCount > 0);
-
-    // Filtrelenmiş verilerden chart için uygun formata dönüştürme
-    const labels = filteredData.map(department => department.name);
-    const values = filteredData.map(department => department.employeeCount);
+export function createDepartmentPieChar(data,charttId) {
+    let filteredData = null;
+    let values = null;
+    let labels =  null;
+    if (charttId === "departmentPieChar"){
+         filteredData = data.filter(department => department.employeeCount > 0);
+         labels = filteredData.map(department => department.name);
+         values = filteredData.map(department => department.employeeCount);
+    }else if(charttId === "departmentPieChartTotalSalary"){
+         filteredData = data.filter(department => department.salaryTotal > 0);
+         labels = filteredData.map(department => department.name);
+         values = filteredData.map(department => department.salaryTotal);
+    }
 
 
     // Pie Chart oluşturma
-    var ctx = document.getElementById("departmentPieChar");
+    var ctx = document.getElementById(charttId);
     var myPieChart = new Chart(ctx, {
         type: 'doughnut',
         data: {

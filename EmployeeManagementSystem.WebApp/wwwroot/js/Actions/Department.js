@@ -1,6 +1,6 @@
 import {makeAjaxRequest} from "../ajax/GenericAjax.js";
 import {createDepartmentPieChar} from './DepartmentPieChart.js';
-import {getDepartmentList} from "./DepartmentListService.js";
+import {getDepartmentList, getDepartmentSalaryTotalList} from "./DepartmentListService.js";
 
 const dataTable = $('#departmenDataTable').DataTable({
     pageLength: 5,
@@ -77,12 +77,22 @@ export async function makeDepartmentList() {
         $("#departmentCount").html(response.length);
         dataTable.clear();
         dataTable.rows.add(response).draw();
-        createDepartmentPieChar(response);
+        await createDepartmentPieChar(response,"departmentPieChar");
 
     } catch (error) {
         console.error('DataTable verisi yüklenirken hata oluştu:', error);
     }
    
+}
+export async function makeDepartmentSalaryChart(){
+    try {
+        const response = await getDepartmentSalaryTotalList();
+        await createDepartmentPieChar(response,"departmentPieChartTotalSalary");
+
+    } catch (error) {
+        console.error('DataTable verisi yüklenirken hata oluştu:', error);
+    }
+    
 }
 async function createNewDepartment(userid,departmentName) {
     const endpoint = "department/CreateDepartment";
@@ -183,8 +193,9 @@ export async function depInEmployeeAdd(depID) {
         let surname = $("#surnameInput").val();
         let phone = $("#phoneInput").val();
         let email = $("#emailInput").val();
+        let salary = $("#salaryInput").val();
         try {
-            const response = await createNewEmployeeInDepartment(depID, 1, name, surname, phone, email);
+            const response = await createNewEmployeeInDepartment(depID, 1, name, surname, phone, salary,email);
             showCustomDialog({
                 title: 'Success',
                 text: response,
@@ -211,7 +222,7 @@ export async function depInEmployeeAdd(depID) {
     
 }
 window.depInEmployeeAdd = depInEmployeeAdd;
-export async function createNewEmployeeInDepartment(departmentid,userid,name,surname,phone,email) {
+export async function createNewEmployeeInDepartment(departmentid,userid,name,surname,phone,salary,email) {
     const endpoint = "employee/NewEmployee";
     const method = "POST";
     const data = {
@@ -220,6 +231,7 @@ export async function createNewEmployeeInDepartment(departmentid,userid,name,sur
         "name": name,
         "surname": surname,
         "phone": phone,
+        "salary": salary,
         "email": email
     };
     return await makeAjaxRequest(
@@ -300,4 +312,5 @@ $('#frmDepartmentDetail').on('submit', async function (event) {
 $(document).ready(async function () {
     await PullSession();
     await makeDepartmentList();
+    await makeDepartmentSalaryChart();
 });

@@ -25,12 +25,20 @@
       "PackagePath": "staticwebassets/js/Actions/Department.js"
     },
     {
+      "Id": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/wwwroot/js/Actions/DepartmentListService.js",
+      "PackagePath": "staticwebassets/js/Actions/DepartmentListService.js"
+    },
+    {
       "Id": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/wwwroot/js/Actions/DepartmentPieChart.js",
       "PackagePath": "staticwebassets/js/Actions/DepartmentPieChart.js"
     },
     {
       "Id": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/wwwroot/js/Actions/Employee.js",
       "PackagePath": "staticwebassets/js/Actions/Employee.js"
+    },
+    {
+      "Id": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/wwwroot/js/Actions/EmployeeListService.js",
+      "PackagePath": "staticwebassets/js/Actions/EmployeeListService.js"
     },
     {
       "Id": "/Users/beratceylan/Documents/GitHub/EmployeeManagementSystem/EmployeeManagementSystem.WebApp/wwwroot/js/Actions/EmployeePayment.js",

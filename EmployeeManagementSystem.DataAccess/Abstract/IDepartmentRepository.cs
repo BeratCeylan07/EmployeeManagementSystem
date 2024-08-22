@@ -6,6 +6,7 @@ public interface IDepartmentRepository : IBaseRepository<Department>
 {
     Task<Department> GetDepartmentWithEmployees(int departmentId);
     Task<List<Department>> GetAllWithEmployeeCount();
+    Task<List<Department>> GetAllWithSalaryTotal();
     
     Task<bool> HasEmployees(int departmentId);
 

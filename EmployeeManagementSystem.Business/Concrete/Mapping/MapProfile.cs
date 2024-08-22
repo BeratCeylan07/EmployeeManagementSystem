@@ -39,6 +39,10 @@ public class MapProfile : Profile
         CreateMap<Department, DepartmentWithEmployeeCountDto>()
             .ForMember(dest => dest.EmployeeCount, opt => opt.MapFrom(src => src.Employees.Count));
         
+        CreateMap<Department, DepartmentSalaryTotalDto>()
+            .ForMember(dest => dest.SalaryTotal, opt => opt.MapFrom(src => src.Employees.Sum(t => t.Salary)));
+
+        
         CreateMap<Employee, EmployeeDetailDto>()
             .ForMember(dest => dest.DepartmentName, opt => opt.MapFrom(src => src.Department.Name))
             .ForMember(dest => dest.departmenId, opt => opt.MapFrom(src => src.Department.ID))

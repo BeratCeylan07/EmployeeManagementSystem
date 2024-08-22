@@ -67,18 +67,38 @@ Layout = "App_Layout";
         </div>
     </div>
     <div class="col-3">
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Department-Personnel Occupancy Rates</h6>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                <div class="chart-pie pt-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                    <canvas id="departmentPieChar" width="842" height="506" style="display: block; height: 120px !important; width: 200px !important;" class="chartjs-render-monitor"></canvas>
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Department-Personnel Occupancy Rates</h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-pie pt-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                            <canvas id="departmentPieChar" width="842" height="506" style="display: block; height: 120px !important; width: 200px !important;" class="chartjs-render-monitor"></canvas>
+                        </div>
+                        <hr>
+                        You can observe the occupancy rates of the departments
+                    </div>
                 </div>
-                <hr>
-                You can observe the occupancy rates of the departments
+            </div>
+            <div class="col-12">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Employee Expense Indicator for All Departments</h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-pie pt-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                            <canvas id="departmentPieChartTotalSalary" width="842" height="506" style="display: block; height: 120px !important; width: 200px !important;" class="chartjs-render-monitor"></canvas>
+                        </div>
+                        <hr>
+                        You can monitor the staff salary expenses of all departments.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -101,6 +121,10 @@ Layout = "App_Layout";
                     <div class="mb-3">
                         <label for="surnameInput" class="form-label">Last Name</label>
                         <input type="text" class="form-control" id="surnameInput" name="surname" placeholder="Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="salaryInput">Salary</label>
+                        <input type="number" class="form-control" id="salaryInput" required>
                     </div>
                     <div class="mb-3">
                         <label for="phoneInput" class="form-label">Phone</label>

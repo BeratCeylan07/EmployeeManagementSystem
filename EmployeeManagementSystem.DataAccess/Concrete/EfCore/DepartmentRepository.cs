@@ -25,10 +25,24 @@ public class DepartmentRepository : BaseRepository<Department>,IDepartmentReposi
             {
                 ID = d.ID,
                 Name = d.Name,
-                Employees = d.Employees.ToList() // Bu, Entity Framework'ün çalışan sayısını hesaplamasını sağlar
+                Employees = d.Employees.ToList()
             })
             .ToListAsync();
     }
+
+    public async Task<List<Department>> GetAllWithSalaryTotal()
+    {
+        return await _context.Departments
+            .Select(d => new Department
+            {
+                ID = d.ID,
+                Name = d.Name,
+                Employees = d.Employees.ToList()
+            })
+            .ToListAsync();
+        
+    }
+
     public override async Task<int> Update(Department entity)
     {
         var existingEntity = _context.Set<Department>().Find(entity.ID);

@@ -34,6 +34,13 @@ public class DepartmentManager : IDepartmentService
         var departments = await _departmentRepository.GetAllWithEmployeeCount();
         return _mapper.Map<List<DepartmentWithEmployeeCountDto>>(departments);
     }
+
+    public async Task<IEnumerable<DepartmentSalaryTotalDto>> GetAllDepartmentsWithSalaryTotal()
+    {
+        var departments = await _departmentRepository.GetAllWithSalaryTotal();
+        return _mapper.Map<List<DepartmentSalaryTotalDto>>(departments);
+    }
+
     public async Task<IEnumerable<Department>> GetAllDepartments()
     {
         return await _departmentRepository.GetAllAsync();

@@ -8,10 +8,9 @@ public interface IDepartmentService
     Task<bool> Add(AddDepartmentDto addDepartmentDto);
     Task<bool> Update(UpdateDepartmentDto updateDepartmentDto);
     Task<bool> Delete(int departmentId);
-
     Task<IEnumerable<Department>> GetAllDepartments();
     Task<IEnumerable<DepartmentWithEmployeeCountDto>> GetAllDepartmentsWithEmployeeCount();
-
+    Task<IEnumerable<DepartmentSalaryTotalDto>> GetAllDepartmentsWithSalaryTotal();
     Task<DepartmentDetailDto> GetDepartmentWithEmployees(int departmentId);
 
 }
