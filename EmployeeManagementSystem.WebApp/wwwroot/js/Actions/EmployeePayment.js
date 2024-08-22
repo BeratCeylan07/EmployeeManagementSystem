@@ -1,5 +1,6 @@
 import {makeAjaxRequest} from "../ajax/GenericAjax.js";
 import {getEmployeeList} from "./EmployeeListService.js";
+import {deleteEmployeePayment} from "./EmployeePaymentRemoveService.js";
 
 const employeePaymentdataTable = $('#employeePaymentDataTable').DataTable({
     pageLength: 5,
@@ -21,25 +22,7 @@ const employeePaymentdataTable = $('#employeePaymentDataTable').DataTable({
     ]
 });
 
-export async function deleteEmployeePayment(paymentId) {
-
-
-    const endpoint = "emplooyePayment/DeleteEmployeePayment/"+paymentId;
-    const method = "DELETE";
-    return await makeAjaxRequest(
-        endpoint,
-        token,
-        method,
-        null,
-        function (response) {
-            return response;
-        },
-        function (xhr, status, error) {
-            throw xhr;
-        }
-    );
-}
-export async function makeDeleteEmployeepPayment(paymentId) {
+async function makeDeleteEmployeepPayment(paymentId) {
     showCustomDialog({
         title: 'Warning',   
         text: `Selected Employee's Payment Will Be Deleted`,

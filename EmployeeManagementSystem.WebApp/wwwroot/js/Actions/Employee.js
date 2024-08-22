@@ -1,6 +1,7 @@
 import {makeAjaxRequest} from "../ajax/GenericAjax.js";
 import {getEmployeeList} from "./EmployeeListService.js";
 import {getDepartmentList} from "./DepartmentListService.js";
+import {deleteEmployeePayment} from "./EmployeePaymentRemoveService.js";
 
 
 const dataTable = $('#employeDataTable').DataTable({
@@ -22,8 +23,7 @@ const dataTable = $('#employeDataTable').DataTable({
     ]
 });
 $('#employeDataTable').on('click', '.emp-detail-button', async function () {
-    const employeeId = $(this).data('id');
-    console.log(employeeId);
+    let employeeId = $(this).data('id');
     await employeeDetailInfo(employeeId);
 });
 
@@ -38,12 +38,55 @@ const dtbpaymentOfEmployee = $('#paymentOfEmployee').DataTable({
             title: "Action",
             data: null,
             render: function(data, type, row) {
-                return '<button class="btn btn-danger emp-detail-button" data-id="' + row.id + '"><i class="fas fa-trash"></i></button>';
+                return '<button class="btn btn-danger emp-detail-pymnt-remove-button" data-id="' + row.id + '"><i class="fas fa-trash"></i></button>';
             },
             orderable: false
         }
     ]
 });
+$('#paymentOfEmployee').on('click', '.emp-detail-pymnt-remove-button', async function () {
+    const employeeId = $(this).data('id');
+    await makeDeleteEmployeepPayment(employeeId);
+});
+
+async function makeDeleteEmployeepPayment(paymentId) {
+    showCustomDialog({
+        title: 'Warning',
+        text: `Selected Employee's Payment Will Be Deleted`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Delete',
+        cancelButtonText: 'Cancel',
+        onConfirm: async (value) => {
+            try {
+                const response = await deleteEmployeePayment(paymentId);
+                showCustomDialog({
+                    title: 'Success',
+                    text: response,
+                    icon: 'success',
+                    showCancelButton: false,
+                    confirmButtonText: 'Ok'
+                });
+                let employeeId = $('#dtEmployeeId').val();
+                await employeeDetailInfo(employeeId);
+
+            } catch (error) {
+                showCustomDialog({
+                    title: 'Error',
+                    text: error.responseText,
+                    icon: 'error',
+                    showCancelButton: false,
+                    confirmButtonText: 'Ok'
+                });
+            }
+        },
+        onCancel: () => {
+
+        }
+    });
+
+}
+
 
 export async function makeEmployeeDelete(employeeId) {
     console.log(employeeId);

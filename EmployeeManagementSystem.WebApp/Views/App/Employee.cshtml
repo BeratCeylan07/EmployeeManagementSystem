@@ -127,12 +127,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="frmEmployeeInfoEdit">
                     <div class="row">
-
                         <div class="col-4">
+                            <form id="frmEmployeeInfoEdit">
                             <input type="text" class="form-control" id="dtEmployeeId" aria-describedby="emailHelp" hidden>
-
                             <div class="mb-3">
                                 <label for="dtEmployeedepartmentSelect" class="form-label">Departman</label>
                                 <select class="form-control" id="dtEmployeedepartmentSelect" name="department" required>
@@ -163,7 +161,8 @@
                             </div>
                             <div id="btnemployeeDetailRemoveArea" class="form-group">
                             </div>
-                        </div>
+                        </form>
+                    </div>
                         <div class="col-8 mt-3">
                             <div id="btnemployeeDetailPaymentAdding" class="form-group mt-2">
                             </div>
@@ -191,12 +190,7 @@
                                 </table>
                             </div>
                         </div>
-
                     </div>
-
-                </form>
-
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

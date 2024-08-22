@@ -205,6 +205,7 @@ export async function depInEmployeeAdd(depID) {
             });
             await departmentDetailInfo(depID,true);
             await makeDepartmentList();
+            await makeDepartmentSalaryChart();
             
         }catch (error){
             showCustomDialog({
