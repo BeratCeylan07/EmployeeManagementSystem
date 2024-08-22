@@ -81,7 +81,7 @@ namespace EmployeeManagementSystem.API.Controllers
 
             if (result)
             {
-                return NoContent();
+                return Ok("Department updated successfully");
             }
             else
             {
@@ -97,7 +97,7 @@ namespace EmployeeManagementSystem.API.Controllers
 
                 if (result)
                 {
-                    return NoContent(); // 204 No Content
+                    return Ok("Department Is Deleted"); // 204 No Content
                 }
                 else
                 {

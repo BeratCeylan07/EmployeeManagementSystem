@@ -193,7 +193,6 @@
             text: options.text,
             icon: options.icon,
             backdrop: false,
-            escape:false,
             showCancelButton: options.showCancelButton || false,
             confirmButtonText: options.confirmButtonText || 'Ok',
             cancelButtonText: options.cancelButtonText || 'Cancel',
@@ -223,6 +222,27 @@
 
             }
         });
+    }
+    let userID = "";
+    let token = "";
+    async function PullSession() {
+        let endPointHead = "/Session/PullSession";
+        await $.ajax({
+            url:endPointHead,
+            type: 'POST',
+            contentType: "application/json",
+            success: function(response) {
+                userID = response.userID;
+                token = response.token;
+
+                console.log(response);
+
+            },
+            error: function(xhr, status, error) {
+
+            }
+        });
+
     }
 </script>
 

@@ -64,28 +64,24 @@ namespace EmployeeManagementSystem.API.Controllers
             return Ok(employees);
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> updateEmployee(int id, [FromBody] UpdateEmployeeDto updateemployeeDto)
+        public async Task<IActionResult> UpdateEmployee(int id, [FromBody] UpdateEmployeeDto updateemployeeDto)
         {
             if (id != updateemployeeDto.Id)
             {
                 return BadRequest("ID in the URL does not match the ID in the request body.");
             }
-
-          
-
+            
             bool result = await _employeeService.UpdateAsync(updateemployeeDto);
 
             if (result)
             {
-                return NoContent(); // 204 No Content
+                return Ok("Employee is All Info Updated");
             }
             else
             {
                 return NotFound($"Department with ID {id} not found.");
             }
         }
-
-        // DELETE endpoint'i
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmployee(int id)
         {
@@ -95,7 +91,7 @@ namespace EmployeeManagementSystem.API.Controllers
 
                 if (result)
                 {
-                    return NoContent();
+                    return Ok("Employee Is Removed successfully");
                 }
                 else
                 {

@@ -1,25 +1,8 @@
 import {makeAjaxRequest} from "../ajax/GenericAjax.js";
-let userID = "";
-let token = "";
-async function PullSession() {
-    var endPointHead = "/Session/PullSession";
+import {getEmployeeList} from "./EmployeeListService.js";
+import {getDepartmentList} from "./DepartmentListService.js";
 
 
-    await $.ajax({
-        url:endPointHead,
-        type: 'POST',
-        contentType: "application/json",
-        success: function(response) {
-            userID = response.userID;
-            token = response.token;
-
-        },
-        error: function(xhr, status, error) {
-
-        }
-    });
-
-}
 const dataTable = $('#employeDataTable').DataTable({
     pageLength: 5,
     lengthMenu: [5, 10, 20, 50, 100],
@@ -38,9 +21,10 @@ const dataTable = $('#employeDataTable').DataTable({
         }
     ]
 });
-$('#employeDataTable').on('click', '.emp-detail-button', function() {
+$('#employeDataTable').on('click', '.emp-detail-button', async function () {
     const employeeId = $(this).data('id');
-    employeeDetailInfo(employeeId);
+    console.log(employeeId);
+    await employeeDetailInfo(employeeId);
 });
 
 const dtbpaymentOfEmployee = $('#paymentOfEmployee').DataTable({
@@ -49,20 +33,20 @@ const dtbpaymentOfEmployee = $('#paymentOfEmployee').DataTable({
     columns: [
         { title: "ID", data: "id" },
         { title: "Amount", data: "amount" },
-        { title: "Date", data: "isCreatedDate" },
+        { title: "Date", data: "paymentDate" },
         {
             title: "Action",
             data: null,
             render: function(data, type, row) {
-                return '<button class="btn btn-info emp-detail-button" data-id="' + row.id + '"><i class="fas fa-eye"></i></button>';
+                return '<button class="btn btn-danger emp-detail-button" data-id="' + row.id + '"><i class="fas fa-trash"></i></button>';
             },
             orderable: false
         }
     ]
 });
 
-window.employeeDelete = employeeDelete;
-export async function employeeDelete(employeeId) {
+export async function makeEmployeeDelete(employeeId) {
+    console.log(employeeId);
     showCustomDialog({
         title: 'Warning',
         text: 'Selected Employee Will Be Deleted',
@@ -70,51 +54,30 @@ export async function employeeDelete(employeeId) {
         showCancelButton: true,
         confirmButtonText: 'Delete',
         cancelButtonText: 'Cancel',
-        onConfirm: (value) => {
-            console.log("Tıklandı");
-            const endpoint = `employee/DeleteEmployee/${employeeId}`;
-            const method = "DELETE";
-             makeAjaxRequest(
-                endpoint,
-                token,
-                method,
-                null,
-                function (response) {
+        onConfirm: async (value) => {
+            try {
+                const response = await deleteEmployee(employeeId);
+                console.log(response);
+                showCustomDialog({
+                    title: 'Success',
+                    text: response,
+                    icon: 'success',
+                    showCancelButton: false,
+                    confirmButtonText: 'Ok'
+                });
+                await makeEmployeListDataTable();
+                $('#employeeDetailModal').modal('hide');
 
-                    showCustomDialog({
-                        title: 'Success',
-                        text: 'Employee Deleted',
-                        icon: 'success',
-                        showCancelButton: false,
-                        confirmButtonText: 'Ok',
-                        onConfirm: (value) => {
-                            getEmployeeList();
-                            getDepartmentListForSelect();
-                            $('#employeeDetailModal').modal('hide'); 
-                        },
-                        onCancel: () => {
-
-                        }
-                    });
-                },
-                function (xhr, status, error) {
-                    console.error('Hata:', xhr.responseText + ' ' + xhr.status);
-                    showCustomDialog({
-                        title: 'error',
-                        html: '<b>' + xhr.responseText + ' <hr>Error Code: ' + xhr.status + '</b>',
-                        icon: 'error',
-                        showCancelButton: false,
-                        confirmButtonText: 'Ok',
-                        onConfirm: (value) => {
-                            
-                        },
-                        onCancel: () => {
-
-                        }
-                    });
-                }
-            );
-        },
+            } catch (error) {
+                console.log(error);
+                showCustomDialog({
+                    title: 'Error',
+                    text: error.responseText,
+                    icon: 'error',
+                    showCancelButton: false,
+                    confirmButtonText: 'Ok'
+                });
+            }        },
         onCancel: () => {
 
         }
@@ -124,34 +87,23 @@ export async function employeeDelete(employeeId) {
 
 
 
-export function getEmployeeList(){
-
-
-    var endPointHead = "employee/GetAllEmployees";
-
-    makeAjaxRequest(
-        endPointHead,
-        token,
-        'GET',
-        null,
-        function(response) {
-            console.log('Başarılı yanıt:', response);
-            $("#employeeCount").html(response.length);
-            // DataTable'ı temizle
-            dataTable.clear();
-            // Veriyi DataTable'a ekle
-            dataTable.rows.add(response).draw();
-            },
-        function(xhr, status, error) {
-            console.error('Hata:', error);
-        }
-    );
+async function makeEmployeListDataTable() {
+    try {
+        const response = await getEmployeeList();
+        console.log('Çalışan Listesi:', response);
+        $("#employeeCount").html(response.length);
+        dataTable.clear();
+        dataTable.rows.add(response).draw();
+    } catch (error) {
+        console.error('DataTable verisi yüklenirken hata oluştu:', error);
+    }
 }
+
 
 export async function updateEmployee(id,departmentid,userid,name,surname,phone,email,salary) {
     const endpoint = `employee/updateEmployee/${id}`;
     const method = "PUT";
-    const data = JSON.stringify({
+    const data = {
         "id":id,
         "departmentId": departmentid,
         "userID": userID,
@@ -160,52 +112,27 @@ export async function updateEmployee(id,departmentid,userid,name,surname,phone,e
         "phone": phone,
         "email": email,
         "salary": salary,
-    });
+    };
     console.log("req: ",data);
-    await makeAjaxRequest(
+    return await makeAjaxRequest(
         endpoint,
         token,
         method,
         data,
-        function(response) {
-            showCustomDialog({
-                title: 'Success',
-                text: 'Employee info is updated',
-                icon: 'success',
-                showCancelButton: false,
-                confirmButtonText: 'Ok',
-                onConfirm: (value) => {
-                    getEmployeeList();
-                    getDepartmentListForSelect();
-                },
-                onCancel: () => {
-
-                }
-            });
-            employeeDetailInfo(id,true);
-            getEmployeeList();
+        function (response) {
+            return response;
         },
-        function(xhr, status, error) {
-            showCustomDialog({
-                title: 'error',
-                html: '<b>' + xhr.responseText + ' <hr>Error Code: ' + xhr.status + '</b>',
-                icon: 'error',
-                showCancelButton: false,
-                confirmButtonText: 'Ok',
-                onConfirm: (value) => {
-
-                },
-                onCancel: () => {
-
-                }
-            });  
+        function (xhr, status, error) {
+            throw xhr;
         }
     );
 }
 export async function createNewEmployee(departmentid,userid,name,surname,phone,email,salary) {
+    
+    
     const endpoint = "employee/NewEmployee";
     const method = "POST";
-    const data = JSON.stringify({
+    const data = {
             "departmentId": departmentid,
             "userID": userID,
             "name": name,
@@ -213,127 +140,109 @@ export async function createNewEmployee(departmentid,userid,name,surname,phone,e
             "phone": phone,
             "email": email,
             "salary": salary,
-    });
-    await makeAjaxRequest(
+    };
+    console.log("req: ",data);
+    return await makeAjaxRequest(
         endpoint,
         token,
         method,
         data,
-        function(response) {
-            console.log('Başarılı yanıt:', response);
-
-            showCustomDialog({
-                title: 'Success',
-                text: 'Employee Registration Done',
-                icon: 'success',
-                showCancelButton: false,
-                confirmButtonText: 'Ok'
-            });
-            getEmployeeList();
+        function (response) {
+            return response;
         },
-        function(xhr, status, error) {
-            showCustomDialog({
-                title: 'error',
-                html: '<b>' + xhr.responseText + ' <hr>Error Code: ' + xhr.status + '</b>',
-                icon: 'error',
-                showCancelButton: false,
-                confirmButtonText: 'Ok',
-                onConfirm: (value) => {
-
-                },
-                onCancel: () => {
-
-                }
-            });        
+        function (xhr, status, error) {
+            throw xhr;
         }
     );
 }
-
 export async function getDepartmentListForSelect(){
 
 
-    var endPointHead = "department/GetAllDepartments";
+ 
+    const departments = await getDepartmentList();
+    const selectElementNewEmployee = document.getElementById('departmentSelect');
+    selectElementNewEmployee.innerHTML = '';
+    const selectElementDetailEmployee = document.getElementById('dtEmployeedepartmentSelect');
+    selectElementDetailEmployee.innerHTML = '';
+    departments.forEach(department => {
+        const option = document.createElement('option');
+        const option2 = document.createElement('option');
 
-    await makeAjaxRequest(
-        endPointHead,
-        token,
-        'GET',
-        null,
-        function(response) {
-            const departments = response.result;
-            console.log(departments);
-            const selectElementNewEmployee = document.getElementById('departmentSelect');
-            selectElementNewEmployee.innerHTML = '';
-            const selectElementDetailEmployee = document.getElementById('dtEmployeedepartmentSelect');
-            selectElementDetailEmployee.innerHTML = '';
-            departments.forEach(department => {
-                const option = document.createElement('option');
-                const option2 = document.createElement('option');
+        option.value = department.id;
+        option.textContent = department.name;
 
-                option.value = department.id;
-                option.textContent = department.name;
-                
-                option2.value = department.id;
-                option2.textContent = department.name;
-                
-                selectElementNewEmployee.append(option);
-                
-                selectElementDetailEmployee.append(option2);
+        option2.value = department.id;
+        option2.textContent = department.name;
 
-            });
+        selectElementNewEmployee.append(option);
 
+        selectElementDetailEmployee.append(option2);
 
-
-        },
-        function(xhr, status, error) {
-            console.error('Hata:', error);
-        }
-    );
+    });
 }
 
 export async function employeeDetailInfo(employeeId,modalOpened) {
+    
     const endpoint = `employee/GetEmployeeDetails?id=${employeeId}`;
     const method = "GET";
-    await makeAjaxRequest(
+    const response = await makeAjaxRequest(
         endpoint,
         token,
         method,
         null,
         function (response) {
-            console.log("employee detail ", response);
-            $('#dtEmployeeName').val(response.name);
-            $('#titleeEmployeeFullName').html(response.name + " " + response.surname);
-            $('#dtEmployeeSurname').val(response.surname);
-            $('#dtEmployeePhone').val(response.phone);
-            $('#dtEmployeeEmail').val(response.email);
-            $('#dtEmployeeSalary').val(response.salary);
-            $('#dtEmployeedepartmentSelect').val(response.departmenId);
-            $('#dtEmployeeId').val(employeeId);
-            $('#employeeDetailModal').modal('show');
-            let employeePaymentAddButton = `<button type="button" onclick="employeePaymentAdd(${response.id})" class="btn btn-success btn-sm" style="margin-top: 7px;" disabled><i class="fas fa-plus"></i> Payment Add(cooming soon)</button>`;
-            $("#btnemployeeDetailPaymentAdding").html(employeePaymentAddButton);
-
-            let btnemployeeDetailRemoveButton = `<button type="button" onclick="employeeDelete(${response.id})" class="btn btn-danger  w-100" style="margin-top: 7px;"><i class="fas fa-user-times"></i> Employee Delete</button>`;
-            $("#btnemployeeDetailRemoveArea").html(btnemployeeDetailRemoveButton);
-            
-            const employeePaymentList = response.payments;
-
-
-
+            return response;
         },
         function (xhr, status, error) {
             console.error('Hata:', error);
-            // Hata durumunda yapılacak işlemler
+            throw  xhr.responseText;
+        }
+    );
+    
+    $('#dtEmployeeName').val(response.name);
+    $('#titleeEmployeeFullName').html(response.name + " " + response.surname);
+    $('#dtEmployeeSurname').val(response.surname);
+    $('#dtEmployeePhone').val(response.phone);
+    $('#dtEmployeeEmail').val(response.email);
+    $('#dtEmployeeSalary').val(response.salary);
+    $('#dtEmployeedepartmentSelect').val(response.departmenId);
+    $('#dtEmployeeId').val(employeeId);
+    $('#employeeDetailModal').modal('show');
+
+    let employeePaymentAddButton = `<button type="button" onclick="employeePaymentAdd(${response.id})" class="btn btn-success btn-sm" style="margin-top: 7px;" disabled><i class="fas fa-plus"></i> Payment Add(cooming soon)</button>`;
+    $("#btnemployeeDetailPaymentAdding").html(employeePaymentAddButton);
+
+    let btnemployeeDetailRemoveButton = `<button type="button" onclick="makeEmployeeDelete(${response.id})" class="btn btn-danger  w-100" style="margin-top: 7px;"><i class="fas fa-user-times"></i> Employee Delete</button>`;
+    $("#btnemployeeDetailRemoveArea").html(btnemployeeDetailRemoveButton);
+
+    const employeePaymentList = response.payments;
+    console.log(employeePaymentList);
+    dtbpaymentOfEmployee.clear();
+    dtbpaymentOfEmployee.rows.add(employeePaymentList).draw();
+    
+}
+
+export async function deleteEmployee(employeeId) {
+
+
+    const endpoint = `employee/DeleteEmployee/${employeeId}`;
+    const method = "DELETE";
+    return await makeAjaxRequest(
+        endpoint,
+        token,
+        method,
+        null,
+        function (response) {
+            return response;
+        },
+        function (xhr, status, error) {
+            throw xhr;
         }
     );
 }
 
+ 
 
-$(document).ready(async function () {
-    await PullSession();
-    await getEmployeeList();
-    await getDepartmentListForSelect();
-});
 $('#employeeForm').on('submit', async function (event) {
     event.preventDefault(); // Prevent the default form submit behavior
 
@@ -344,10 +253,28 @@ $('#employeeForm').on('submit', async function (event) {
     let email = $("#emailInput").val();
     let salary = $("#salaryInput").val();
 
-    // Call the createNewEmployee function
-    await createNewEmployee(department, 1, name, surname, phone, email, salary);
-
-    // Optionally, you can close the modal and reset the form
+    try {
+        const response = await createNewEmployee(department, userID, name, surname, phone, email, salary);
+        console.log('Create Reponse: ', response);
+        showCustomDialog({
+            title: 'Success',
+            text: response,
+            icon: 'success',
+            showCancelButton: false,
+            confirmButtonText: 'Ok'
+        });
+        await makeEmployeListDataTable();
+  
+    } catch (error) {
+        console.error('Create Error', error.responseText);
+        showCustomDialog({
+            title: 'error',
+            text: error.responseText,
+            icon: 'error',
+            showCancelButton: false,
+            confirmButtonText: 'Ok'
+        });
+    }
     $('#newEmployeeModal').modal('hide');
     $('#employeeForm')[0].reset();
 });
@@ -363,10 +290,33 @@ $('#frmEmployeeInfoEdit').on('submit', async function (event) {
     let phone = $("#dtEmployeePhone").val();
     let email = $("#dtEmployeeEmail").val();
     let salary = $("#dtEmployeeSalary").val();
+    try {
+        const response = await updateEmployee(employeeid,department, userID, name, surname, phone, email, salary);
+        console.log('Update Reponse: ', response);
+        showCustomDialog({
+            title: 'Success',
+            text: response,
+            icon: 'success',
+            showCancelButton: false,
+            confirmButtonText: 'Ok'
+        });
+        employeeDetailInfo(employeeid,true);
+        await makeEmployeListDataTable();
 
-    // Call the createNewEmployee function
-    await updateEmployee(employeeid,department, 1, name, surname, phone, email, salary);
-
-    // Optionally, you can close the modal and reset the form
-    $('#frmEmployeeInfoEdit')[0].reset();
+    } catch (error) {
+        console.error('Update Error', error.responseText);
+        showCustomDialog({
+            title: 'error',
+            text: error.responseText,
+            icon: 'error',
+            showCancelButton: false,
+            confirmButtonText: 'Ok'
+        });
+    }
+    
 });
+$(document).ready(async function () {
+    await PullSession();
+    await makeEmployeListDataTable();
+    await getDepartmentListForSelect();
+})

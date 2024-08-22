@@ -26,7 +26,7 @@ namespace EmployeeManagementSystem.API.Controllers
             return Ok(employeePayments);
         }
         [HttpPost]
-        public async Task<IActionResult> NewEmployee([FromBody] CreateEmployeePaymentDto request)
+        public async Task<IActionResult> NewEmployeePayment([FromBody] CreateEmployeePaymentDto request)
         {
             if (request == null)
             {
@@ -49,6 +49,46 @@ namespace EmployeeManagementSystem.API.Controllers
             {
                 // Log the exception
                 return StatusCode(500, "An error occurred while creating the Employee");
+            }
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteEmployeePayment(int id)
+        {
+            try
+            {
+                bool result = await _employeePaymentService.DeleteAsync(id);
+
+                if (result)
+                {
+                    return Ok("Employee Payment Is Removed successfully");
+                }
+                else
+                {
+                    return NotFound($"Employee with ID {id} not found.");
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> paymentEmployeeUpdate(int id, [FromBody] UpdateEmployeePaymentDto updateEmployeePaymentDto)
+        {
+            if (id != updateEmployeePaymentDto.Id)
+            {
+                return BadRequest("ID in the URL does not match the ID in the request body.");
+            }
+            
+            bool result = await _employeePaymentService.UpdateAsync(updateEmployeePaymentDto);
+
+            if (result)
+            {
+                return Ok("Employee Payment is All Info Updated");
+            }
+            else
+            {
+                return NotFound($"Department with ID {id} not found.");
             }
         }
     }

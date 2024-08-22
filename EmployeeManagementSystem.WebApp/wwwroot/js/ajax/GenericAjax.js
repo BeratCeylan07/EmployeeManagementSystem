@@ -1,25 +1,19 @@
 let URL = "https://localhost:7161/api/";
 
-export async function makeAjaxRequest(endpoint, token, method, data, successCallback, errorCallback) {
-  
-   await $.ajax({
-        url: URL+endpoint,
-        type: method, // GET, POST, PUT, DELETE, vb.
-        data: data, // İstek verileri (JSON, FormData, vb.)
-       contentType: "application/json",
-       headers: {
-           "Content-Type": "application/json",
-           "Authorization": `Bearer ${token}`
-       },
-        success: function(response) {
-            if (typeof successCallback === 'function') {
-                successCallback(response);
+export async function makeAjaxRequest(endpoint, token, method, data) {
+    try {
+        // AJAX çağrısını doğrudan Promise olarak döndür
+        return await $.ajax({
+            url: URL + endpoint,
+            type: method,
+            data: JSON.stringify(data), // Veriyi JSON formatına dönüştür
+            contentType: "application/json",
+            timeout: 0,
+            headers: {
+                "Authorization": `Bearer ${token}`
             }
-        },
-        error: function(xhr, status, error) {
-            if (typeof errorCallback === 'function') {
-                errorCallback(xhr, status, error);
-            }
-        }
-    });
+        }); // Başarılı yanıtı döndür
+    } catch (error) {
+        throw error; // Hata oluşursa bu hatayı fırlat
+    }
 }
